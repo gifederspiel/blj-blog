@@ -41,4 +41,11 @@ nav{
     grid-template-columns: 100%;
     grid-template-rows: 50px, 20px, 300px, 300px, 300px;    
 }
+.error-box {
+    color: red;
+    background-color: rgb(250, 220, 220);
+    border: 1px solid red;
+    border-radius: 10px;
+    padding-top: 10px;
+}
 
