@@ -55,6 +55,9 @@ if ($title !== ''){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>Document</title>
+    <button type="button" class="topbutton">
+    <a href="login.php"></a>Login
+    </button>
 </head>
 <body class="wrapper">
     <div>

@@ -24,6 +24,9 @@ $picture =$_POST['bild'] ?? '';
 <body class="wrapper">
     <head>
         <h1 class="title">Gian's BLOG</h1>
+        <button type="button" class="topbutton">
+        <a href="login.php"></a>Login
+        </button>
     </head>
         <?php include 'standart.php' ?>
         <br>
@@ -36,7 +39,7 @@ $picture =$_POST['bild'] ?? '';
     <h3 class="author1"><?php echo"$x[1]"?></h3>
     <h3 class="date1"><?php echo"$x[2]"?></h3>
     <p class="content1"><?php echo"$x[4]"?></p>
-    <img src="<?php echo "$x[5]"?>" alt="" class="picture">
+    <img src="<?php echo "$x[5]"?>" alt="" class="picture"><br><br>
     <hr>
     
     <?php

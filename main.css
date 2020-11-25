@@ -33,7 +33,7 @@ nav{
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 50px, 30px, 30px, auto;
-    grid-template-rows: 50px, 20px, 300px, auto;    
+    grid-template-rows: 50px, 20px, auto;    
 }
 .error-box {
     color: red;
@@ -80,4 +80,11 @@ hr {
 .picture{
     height: 180px;
     width: auto;
+}
+.topbutton{
+    grid-row: 1;
+    grid-column: 3;
+    margin-left: 30px;
+    height: 50px;
+    width: 90px;
 }
