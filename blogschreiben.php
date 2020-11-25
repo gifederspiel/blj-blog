@@ -15,6 +15,7 @@ $title = $_POST['title'] ?? '';
 $content = $_POST['content'] ?? '';
 $createdat = $_POST['createdat'] ?? '';
 $createdby =$_POST['username'] ?? '';
+$picture =$_POST['bild']?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
@@ -37,10 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 //Daten in Datenbank speichern
-$dbconnection = new PDO('mysql:hostJ=localhost;dbname=blog', $user, $password);
-$stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text) VALUES (:created_by, now(), :post_title, :post_text)");
+if ($title !== ''){
 
-$stmt->execute(["created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content"]);
+
+    $dbconnection = new PDO('mysql:hostJ=localhost;dbname=blog', $user, $password);
+    $stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text, picture) VALUES (:created_by, now(), :post_title, :post_text, :picture)");
+    $stmt->execute(["created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
+}
 
 
 ?>
@@ -64,8 +68,10 @@ $stmt->execute(["created_by" => "$createdby", ":post_title" => "$title", ":post_
         <lable for="username"></lable>
         <input type="text" id="username" name="username" placeholder="Created by:" require>
         <lable for="createdat"></lable>
-        <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" require><br>
-        <label for="content" class="contentinput"></label><br>
+        <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" require>
+        <label for="bild"></label>
+        <input type="text" id="bild" name="bild" placeholder="Picture url: "><br>
+        <label for="content" class="contentinput"></label>
         <textarea id="content" name="content" rows="30" cols="163"placeholder="Content:" require></textarea><br>
         <button type="submit" value="submit">Submit</button>
     </form>

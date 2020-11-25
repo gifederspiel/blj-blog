@@ -11,11 +11,12 @@ nav{
     background-color: #b3e9c8;
     overflow: hidden;
     grid-row: 2;
-    grid-column: 1;
+    grid-column: 1/4;
 }
 .title{
-    text-align: center;
+    text-align: auto;
     grid-row: 1;
+    grid-column: 1/4;
 }
 .formular{
     grid-row: 3;
@@ -27,19 +28,12 @@ nav{
     text-align: center;
     width: 100%;
 }
-.content1{
-    text-align: center;
-    grid-row: 3;
-}
-.content2{
-    text-align: center;
-    grid-row: 4;
-}
+
 .wrapper{
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 100%;
-    grid-template-rows: 50px, 20px, 300px, 300px, 300px;    
+    grid-template-columns: 50px, 30px, 30px, auto;
+    grid-template-rows: 50px, 20px, 300px, auto;    
 }
 .error-box {
     color: red;
@@ -48,4 +42,42 @@ nav{
     border-radius: 10px;
     padding-top: 10px;
 }
-
+.title1{
+    
+    grid-column: 1;
+}
+.author1{
+    
+    grid-column: 2;
+}
+.date1{
+    
+    grid-column: 3;
+}
+.content1{
+    
+    grid-column: 1/4;
+}
+hr { 
+    grid-column: 1/4;
+    width: 100%; 
+    color: #b3e9c8;
+    
+}
+.links{
+    grid-row: 3;
+    
+}
+.name{
+    grid-column: 1;
+    overflow: hidden;
+    text-decoration: none;
+    color: #000000;
+}
+.link{
+    grid-column: 3;
+}
+.picture{
+    height: 180px;
+    width: auto;
+}
