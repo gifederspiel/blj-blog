@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+             
+        }
+
+        a {
+            border: solid 1px blue;
+            display: inline-block;
+            width:  100px;
+            height: 30px;
+            background-color: lightblue;
+
+        }
+
+        textarea {
+            width: 500px;
+            height: 80px;
+        }
+
+        header {
+
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+
+        <header>
+            <h1>Willkommen</h1>
+            <div class="login-bar">
+                <a href="#">Register</a>
+                <a href="#">Login</a>
+            </div>
+        </header>
+        <nav>
+            Navigation hier
+        </nav>
+        <main>
+            <form action="blogschreiben.php" method="post" class="formular">
+                <lable for="title"></lable><br>
+                <input type="text" id="title" name="title"placeholder="Title:" require>
+                <lable for="username"></lable>
+                <input type="text" id="username" name="username" placeholder="Created by:" require>
+                <lable for="createdat"></lable>
+                <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" require>
+                <label for="bild"></label>
+                <input type="text" id="bild" name="bild" placeholder="Picture url: "><br>
+                <label for="content" class="contentinput"></label>
+                <textarea id="content" name="content" placeholder="Content:" require></textarea><br>
+                <button type="submit" value="submit">Submit</button>
+            </form>
+        </main>
+        <div class="error-box">
+            errors
+        </div>
+    </div>
+</body>
+</html>

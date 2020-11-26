@@ -7,16 +7,6 @@ $pdo = new PDO("mysql:host=mysql2.webland.ch;dbname=d041e_listuder", $dbuser, $d
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
 ]);
-echo '<div class="links">';
-$sqlQuery = $pdo->query("SELECT * FROM `blog_url`");
-foreach ($sqlQuery->fetchAll() as $x){
-    ?>
-    <a href="<?php echo "$x[2]"?>" class="name">Blog von: <?php echo "$x[1]"?></a><br><br>
-    
-    <?php
-}
-echo '</div>';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,15 +15,30 @@ echo '</div>';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>Links</title>
-    <button type="button" class="topbutton">
-    <a href="login.php"></a>Login
-    </button>
 </head>
-<body class="wrapper">
-    <div>
-        <h1 class="title">Links zu anderen BLJ Blogs</h1>
+<body>
+    <div class="wrapper">
+        
+    <header>
+            <h1 class="title">Links to other blj member Blogs</h1>
+            <?php include 'standart2.php' ?>
+        </header>
+
+        <?php include 'standart.php' ?>
+
+        <?php echo '<div class="links">';
+        $sqlQuery = $pdo->query("SELECT * FROM `blog_url`");
+        ?><br><br><?php
+        foreach ($sqlQuery->fetchAll() as $x){
+            ?>
+            <a href="<?php echo "$x[2]"?>" class="name">Blog from  <?php echo "$x[1]"?></a><br><br>
+    
+            <?php
+        }
+        echo '</div>';
+
+            ?>
         
     </div>
-    <?php include 'standart.php' ?>  
 </body>
 </html>

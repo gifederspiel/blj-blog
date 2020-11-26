@@ -54,49 +54,45 @@ if ($title !== ''){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Document</title>
-    <button type="button" class="topbutton">
-    <a href="login.php"></a>Login
-    </button>
+    <title>Write Blog</title>
 </head>
-<body class="wrapper">
-    <div>
-        <h1 class="title">BLOG erfassen</h1>
-    </div>
-    <?php include 'standart.php' ?>
-
-    <form action="blogschreiben.php" method="post" class="formular">
-        <lable for="title"></lable><br>
-        <input type="text" id="title" name="title"placeholder="Title:" require>
-        <lable for="username"></lable>
-        <input type="text" id="username" name="username" placeholder="Created by:" require>
-        <lable for="createdat"></lable>
-        <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" require>
-        <label for="bild"></label>
-        <input type="text" id="bild" name="bild" placeholder="Picture url: "><br>
-        <label for="content" class="contentinput"></label>
-        <textarea id="content" name="content" rows="30" cols="163"placeholder="Content:" require></textarea><br>
-        <button type="submit" value="submit">Submit</button>
-    </form>
-    
-    <div>
-        <?php 
-        /*var_dump($pdo);
-        $stmt = $pdo->query('SELECT * FROM `blog`');
-        foreach($stmt->fetchAll()as $input){
-            var_dump($input);
-        }*/   
-        /*foreach($stmt->fetchAll()as $task){
-            echo '<p>' .$task . '</p>';
-        }*/
-        echo '<dl>';
-        if (count($errors)>0){
+<body>
+    <div class="wrapper">
+        <header>
+            
+            <h1>Write Blog</h1>
+            <?php include 'standart2.php' ?>
+        
+        </header>
+        <?php include 'standart.php' ?> <!-- nav -->
+        
+        <main>
+            <form action="blogschreiben.php" method="post" class="formular">
+                <lable for="title"></lable><br>
+                <input type="text" id="title" name="title"placeholder="Title:" class="title"require>
+                <lable for="username"></lable>
+                <input type="text" id="username" name="username" placeholder="Created by:" class="author" require>
+                <lable for="createdat"></lable>
+                <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" class="date" require>
+                <label for="bild"></label>
+                <input type="text" id="bild" name="bild" placeholder="Picture url: " class="picture"><br>
+                <label for="content" class="contentinput"></label>
+                <textarea id="content" name="content" placeholder="Content:" require class="content"></textarea><br>
+                <button type="submit" value="submit">Submit</button>
+            </form>
+        </main>
+        
+        <div>
+            <?php 
+            echo '<dl>';
+            if (count($errors)>0){
             for($i=0;$i<count($errors);$i++){
             echo "<li class='error-box'>$errors[$i]</li>";
+                }
             }
-        }
-        echo '</dl>';
-        ?>
+            echo '</dl>';
+            ?>
+        </div>
     </div>
 </body>
 </html>

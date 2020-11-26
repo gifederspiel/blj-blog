@@ -1,90 +1,82 @@
-.bar a{
-    float: left;
-    color: #000000;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-
-}
-nav{
-    background-color: #b3e9c8;
-    overflow: hidden;
-    grid-row: 2;
-    grid-column: 1/4;
-}
-.title{
-    text-align: auto;
-    grid-row: 1;
-    grid-column: 1/4;
-}
-.formular{
-    grid-row: 3;
-}
-.titleinput{
-    text-align-last: left;
-}
-.contentinput{
-    text-align: center;
-    width: 100%;
-}
-
 .wrapper{
     display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 50px, 30px, 30px, auto;
-    grid-template-rows: 50px, 20px, auto;    
+    grid-template-rows: 100px, 80px, auto;
+    grid-template-columns: 40%, 20%, 20%, 20%;
 }
-.error-box {
-    color: red;
-    background-color: rgb(250, 220, 220);
-    border: 1px solid red;
-    border-radius: 10px;
-    padding-top: 10px;
+header {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-row: 1;
+    grid-column: 1/3;
 }
-.title1{
-    
-    grid-column: 1;
+.button{
+    border: solid 1px black;
+    color: black;
+    display: inline-block;
+    width:  100px;
+    height: 30px;
+    background-color: lightgreen;
+    padding-top: 15px;
+    padding-left: 50px;
 }
-.author1{
-    
-    grid-column: 2;
-}
-.date1{
-    
-    grid-column: 3;
-}
-.content1{
-    
-    grid-column: 1/4;
-}
-hr { 
-    grid-column: 1/4;
-    width: 100%; 
-    color: #b3e9c8;
-    
+nav{
+    background-color: lightgreen;
+    border: solid 1px black;
+    color: black;
+    grid-row: 2;
+    grid-column: 1/3;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
 }
 .links{
     grid-row: 3;
-    
 }
-.name{
-    grid-column: 1;
-    overflow: hidden;
-    text-decoration: none;
-    color: #000000;
+.loginform{
+    grid-row: 3;
+    grid-column: 1/3;
 }
-.link{
+.registerform{
+    grid-row: 3;
+    grid-column: 1/3;
+}
+.title1{
+    grid-column: 1; 
+}
+.author1{
+    grid-column: 2;
+}
+.date1{
     grid-column: 3;
+}
+.content1{
+    grid-column: 1/4;
+}
+.hr{
+    border-top: 2px solid lightgreen;
+    grid-column: 1/4;
+}
+.title{
+    grid-column: 1;
+    grid-row: 3;
+    width: 60%;
+}
+.content{
+    width: 1800px;
+    height: 500px;
 }
 .picture{
-    height: 180px;
-    width: auto;
+    width: 380px;
 }
-.topbutton{
-    grid-row: 1;
-    grid-column: 3;
-    margin-left: 30px;
-    height: 50px;
-    width: 90px;
+.error-box{
+    color: red;
+}
+.pic{
+    height: 200px;
+    width: auto;
 }
