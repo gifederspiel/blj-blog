@@ -1,9 +1,9 @@
 <?php
 session_start();
-$host ="localhost";
-$user="root";
-$passwd="";
-$database="blog_users";
+$host ="mysql2.webland.ch";
+$user="d041e_gifederspiel";
+$passwd="12345_Db!!!";
+$database="d041e_gifederspiel";
 $message = "";
 
 

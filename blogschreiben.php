@@ -1,8 +1,8 @@
 <?php 
-$user = 'root';
-$password = '';
+$user = 'd041e_gifederspiel';
+$password = '12345_Db!!!';
 
-$pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password,[
+$pdo = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password,[
     PDO::ATTR_ERRMODE               => PDO::ERRMODE_EXCEPTION, 
     PDO::MYSQL_ATTR_INIT_COMMAND    => 'SET NAMES utf8',
 ]);
@@ -11,11 +11,11 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password,[
 $errors = [];
 $formSent = false;
 
-$title = $_POST['title'] ?? '';
-$content = $_POST['content'] ?? '';
-$createdat = $_POST['createdat'] ?? '';
-$createdby =$_POST['username'] ?? '';
-$picture =$_POST['bild']?? '';
+$title = htmlspecialchars($_POST['title'] ?? '');
+$content = htmlspecialchars($_POST['content'] ?? '');
+$createdat = htmlspecialchars($_POST['createdat'] ?? '');
+$createdby = htmlspecialchars($_POST['username'] ?? '');
+$picture = htmlspecialchars($_POST['bild']?? '');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
@@ -28,9 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if ($content === ''){
         array_push($errors, "Content not valid");
     }
-    if ($createdat === ''){
-        array_push($errors, "Date is invalid");
-    }
     if ($createdby === ''){
         array_push($errors, "Author is invalid");
     }
@@ -41,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 if ($title !== ''){
 
 
-    $dbconnection = new PDO('mysql:hostJ=localhost;dbname=blog', $user, $password);
+    $dbconnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password);
     $stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text, picture) VALUES (:created_by, now(), :post_title, :post_text, :picture)");
-    $stmt->execute(["created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
+    $stmt->execute([":created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
 }
 
 
@@ -80,19 +77,22 @@ if ($title !== ''){
                 <textarea id="content" name="content" placeholder="Content:" require class="content"></textarea><br>
                 <button type="submit" value="submit">Submit</button>
             </form>
+
+            <div>
+                <?php 
+                echo '<dl>';
+                if (count($errors)>0){
+                for($i=0;$i<count($errors);$i++){
+                echo "<li class=\"error-box\">$errors[$i]</li>";
+                    }
+                }
+                echo '</dl>';
+            ?>
+            </div>
+
         </main>
         
-        <div>
-            <?php 
-            echo '<dl>';
-            if (count($errors)>0){
-            for($i=0;$i<count($errors);$i++){
-            echo "<li class='error-box'>$errors[$i]</li>";
-                }
-            }
-            echo '</dl>';
-            ?>
-        </div>
+        
     </div>
 </body>
 </html>
