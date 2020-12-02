@@ -1,4 +1,4 @@
 <div>
-    <a href="login.php" class="button">Login</a>
-    <a href="register.php"class="button">Register</a>
+    <a href="login.php" class="button1">Login</a>
+    <a href="register.php"class="button1">Register</a>
 </div>

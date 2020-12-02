@@ -30,7 +30,8 @@ try
             if($count > 0){
                 $_SESSION["username"] = $_POST["username"];
                 header("location: login_success.php");
-                
+                session_start();
+                $_SESSION["loggedin"] = $_POST["login"];
             }
             else{
                 $message = '<label>Wrong Data</label>';
@@ -58,7 +59,7 @@ catch(PDOEXCEPTION $error)
     <div class="wrapper">
 
         <header>
-            <h1 class="title">Login</h1>
+            <h1 class="login">Login</h1>
             <?php include 'standart2.php' ?>
         </header>
             

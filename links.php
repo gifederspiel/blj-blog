@@ -20,7 +20,7 @@ $pdo = new PDO("mysql:host=mysql2.webland.ch;dbname=d041e_listuder", $dbuser, $d
     <div class="wrapper">
         
     <header>
-            <h1 class="title">Links to other blj member Blogs</h1>
+            <h1 class="title">Links to other BLJ-Blogs</h1>
             <?php include 'standart2.php' ?>
         </header>
 
@@ -28,11 +28,15 @@ $pdo = new PDO("mysql:host=mysql2.webland.ch;dbname=d041e_listuder", $dbuser, $d
 
         <?php echo '<div class="links">';
         $sqlQuery = $pdo->query("SELECT * FROM `blog_url`");
-        ?><br><br><?php
+        ?><br><br>
+        <table>
+        <?php
         foreach ($sqlQuery->fetchAll() as $x){
             ?>
-            <a href="<?php echo "$x[2]"?>" class="name">Blog from  <?php echo "$x[1]"?></a><br><br>
-    
+                <td>
+                <a href="<?php echo "$x[2]"?>" class="name">Blog from  <?php echo "$x[1]"?></a><br><br>
+                </td>
+        </table>
             <?php
         }
         echo '</div>';

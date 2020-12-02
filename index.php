@@ -39,7 +39,9 @@ $picture =$_POST['bild'] ?? '';
             <h2 class="title1"><?php echo"$x[3]"?></h2>
             <h3 class="author1">Blog by: <?php echo"$x[1]"?></h3>
             <h3 class="date1">Created at: <?php echo"$x[2]"?></h3>
+            <div class="wrapthatshit">
             <p class="content1"><?php echo"$x[4]"?></p>
+            </div>
             <img class="pic" src="<?php echo "$x[5]"?>" alt="" class="picture"><br><br>
             <p class="hr"></p>
     

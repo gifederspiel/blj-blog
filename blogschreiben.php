@@ -1,6 +1,7 @@
 <?php 
 $user = 'd041e_gifederspiel';
 $password = '12345_Db!!!';
+session_start();
 
 $pdo = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password,[
     PDO::ATTR_ERRMODE               => PDO::ERRMODE_EXCEPTION, 
@@ -17,10 +18,11 @@ $createdat = htmlspecialchars($_POST['createdat'] ?? '');
 $createdby = htmlspecialchars($_POST['username'] ?? '');
 $picture = htmlspecialchars($_POST['bild']?? '');
 
+$blacklist= array("alejandro","kkk", "bruh", "cringe","holdup","arch","gentoo","gento","mint","wolhusen");
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $title = trim($title);
-    $content =trim($content);
 
     if ($title === ''){
         array_push($errors, "The title is invalid");
@@ -31,11 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if ($createdby === ''){
         array_push($errors, "Author is invalid");
     }
+    if ($_SESSION["loggedin"] === ''){
+        array_push($errors, "You need to login first");
+        
+    }
+    foreach ($blacklist as $z){
+        $b_content = stripos($content, $z);
+        $b_title = stripos($title,$z);
+        $b_author = stripos($createdby,$z);
+        if ($b_content===0 || $b_title===0 || $b_author===0){
+        array_push($errors, "Be kind please!");
+        }
+    }
 
 }
 
+
 //Daten in Datenbank speichern
-if ($title !== ''){
+if ($title !== '' && $content !=='' && $createdby !==''){
 
 
     $dbconnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password);
@@ -82,8 +97,8 @@ if ($title !== ''){
                 <?php 
                 echo '<dl>';
                 if (count($errors)>0){
-                for($i=0;$i<count($errors);$i++){
-                echo "<li class=\"error-box\">$errors[$i]</li>";
+                foreach ($errors as $i){
+                echo "<li class=\"error-box\">$i</li>";
                     }
                 }
                 echo '</dl>';

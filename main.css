@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: 100px, 80px, auto;
     grid-template-columns: 40%, 20%, 20%, 20%;
+    
 }
 header {
     color: black;
@@ -11,18 +12,18 @@ header {
     grid-row: 1;
     grid-column: 1/3;
 }
-.button{
+.button1{
     border: solid 1px black;
     color: black;
     display: inline-block;
     width:  100px;
     height: 30px;
-    background-color: lightgreen;
+    background-color: lightgray;
     padding-top: 15px;
     padding-left: 50px;
 }
 nav{
-    background-color: lightgreen;
+    background-color:  lightgray;
     border: solid 1px black;
     color: black;
     grid-row: 2;
@@ -56,9 +57,10 @@ nav{
 }
 .content1{
     grid-column: 1/4;
+   
 }
 .hr{
-    border-top: 2px solid lightgreen;
+    border-top: 2px solid  lightgray;
     grid-column: 1/4;
 }
 .title{
@@ -75,10 +77,24 @@ nav{
 }
 .error-box{
     border: red solid 1px;
-    color: black;
+    background-color: red;
+    color: white ;
 
 }
 .pic{
     height: 200px;
     width: auto;
+}
+body  {
+    background-image: url("https://i.pinimg.com/originals/4e/6c/f8/4e6cf817128bde90a3bc3101c4c0d49a.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.name{
+    font-size: 28px;
 }
