@@ -33,10 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if ($createdby === ''){
         array_push($errors, "Author is invalid");
     }
-    if ($_SESSION["loggedin"] === ''){
-        array_push($errors, "You need to login first");
-        
-    }
     foreach ($blacklist as $z){
         $b_content = stripos($content, $z);
         $b_title = stripos($title,$z);
@@ -50,9 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 //Daten in Datenbank speichern
-if ($title !== '' && $content !=='' && $createdby !==''){
-
-
+if (count($errors)===0 && count($errors)==0){
     $dbconnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password);
     $stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text, picture) VALUES (:created_by, now(), :post_title, :post_text, :picture)");
     $stmt->execute([":created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
@@ -81,15 +75,15 @@ if ($title !== '' && $content !=='' && $createdby !==''){
         <main>
             <form action="blogschreiben.php" method="post" class="formular">
                 <lable for="title"></lable><br>
-                <input type="text" id="title" name="title"placeholder="Title:" class="title"require>
+                <input type="text" id="title" name="title"placeholder="Title:" class="title"required>
                 <lable for="username"></lable>
-                <input type="text" id="username" name="username" placeholder="Created by:" class="author" require>
+                <input type="text" id="username" name="username" placeholder="Created by:" class="author" required>
                 <lable for="createdat"></lable>
-                <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" class="date" require>
+                <input type="datetime-local" id="createdat" name="createdat" placeholder="Created at:" class="date">
                 <label for="bild"></label>
                 <input type="text" id="bild" name="bild" placeholder="Picture url: " class="picture"><br>
                 <label for="content" class="contentinput"></label>
-                <textarea id="content" name="content" placeholder="Content:" require class="content"></textarea><br>
+                <textarea id="content" name="content" placeholder="Content:" required class="content"></textarea><br>
                 <button type="submit" value="submit">Submit</button>
             </form>
 
