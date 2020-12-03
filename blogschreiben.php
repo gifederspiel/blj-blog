@@ -18,7 +18,7 @@ $createdat = htmlspecialchars($_POST['createdat'] ?? '');
 $createdby = htmlspecialchars($_POST['username'] ?? '');
 $picture = htmlspecialchars($_POST['bild']?? '');
 
-$blacklist= array("alejandro","kkk", "bruh", "cringe","holdup","arch","gentoo","gento","mint","wolhusen");
+$blacklist= array("alejandro","kkk", "bruh", "cringe","holdup","arch","gentoo","gento","mint","wolhusen", "racist");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
@@ -46,11 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 //Daten in Datenbank speichern
-if (count($errors)===0 && count($errors)==0){
-    $dbconnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password);
-    $stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text, picture) VALUES (:created_by, now(), :post_title, :post_text, :picture)");
-    $stmt->execute([":created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
+if (count($errors)===0 && isset($_POST['submit'])){
+    echo 'bitteeeeeee';
+    
 }
+
+    
 
 
 ?>
@@ -84,7 +85,7 @@ if (count($errors)===0 && count($errors)==0){
                 <input type="text" id="bild" name="bild" placeholder="Picture url: " class="picture"><br>
                 <label for="content" class="contentinput"></label>
                 <textarea id="content" name="content" placeholder="Content:" required class="content"></textarea><br>
-                <button type="submit" value="submit">Submit</button>
+                <button type="submit" id="submit" name="submit">Submit</button>
             </form>
 
             <div>
