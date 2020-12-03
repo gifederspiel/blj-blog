@@ -18,7 +18,7 @@ $createdat = htmlspecialchars($_POST['createdat'] ?? '');
 $createdby = htmlspecialchars($_POST['username'] ?? '');
 $picture = htmlspecialchars($_POST['bild']?? '');
 
-$blacklist= array("alejandro","kkk", "bruh", "cringe","holdup","arch","gentoo","gento","mint","wolhusen", "racist");
+$blacklist= array("alejandro","kkk", "bruh", "cringe","holdup","arch","gentoo","gento","mint","wolhusen", "racist", "ale","rouven");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
@@ -47,8 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 //Daten in Datenbank speichern
 if (count($errors)===0 && isset($_POST['submit'])){
-    echo 'bitteeeeeee';
-    
+
+    $dbconnection = new PDO('mysql:host=mysql2.webland.ch;dbname=d041e_gifederspiel', $user, $password);
+        $stmt = $dbconnection->prepare("INSERT INTO blog (created_by, created_at, post_title, post_text, picture) VALUES (:created_by, now(), :post_title, :post_text, :picture)");
+        $stmt->execute([":created_by" => "$createdby", ":post_title" => "$title", ":post_text" => "$content", ":picture" => "$picture"]);
 }
 
     
